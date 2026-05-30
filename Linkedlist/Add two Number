@@ -1,0 +1,51 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode h1=l1,h2=l2,t;
+        int ld=0,s=0,c=0,d=0,n1=0,n2=0;
+        ListNode r=new ListNode(0);
+        ListNode l=r;
+        while(h1!=null ||h2!=null){
+            n1=(h1!=null)? h1.val:0;
+            n2=(h2!=null)? h2.val:0;
+           s=n1+n2+c;
+           d=s%10;
+           c=s/10;
+           l.next=new ListNode(d);
+           if(h1!=null)
+           h1=h1.next;
+           if(h2!=null)
+           h2=h2.next;
+           l=l.next;
+        }
+        if(c > 0){
+    l.next = new ListNode(c);
+}
+        return r.next;
+    }
+}
+
+
+
+
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+Example 2:
+
+Input: l1 = [0], l2 = [0]
+Output: [0]
+Example 3:
+
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
